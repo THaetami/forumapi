@@ -1,0 +1,7 @@
+node_modules
+coverage
+.env
+forumapi.pem
+package-lock.json
+config/database/test.json
+dataAws.txt
