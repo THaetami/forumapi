@@ -19,10 +19,29 @@ describe('a DetailComment entity', () => {
     expect(detailComment.content).toEqual(payload.content);
     expect(detailComment.replies).toEqual(payload.replies);
     expect(detailComment.likeCount).toEqual(payload.likeCount);
-    expect(detailComment.isDeleted).toEqual(payload.isDeleted);
   });
 
-  it('should throw error if payload does not meet criteria', () => {
+  it('should create DetailComment object properly when coment deleted', () => {
+    const payload = {
+      id: 'comment-123',
+      username: 'some comment',
+      date: 'thread-123,',
+      content: 'some comment',
+      replies: [],
+      likeCount: 0,
+      isDeleted: true,
+    };
+
+    const detailComment = new DetailComment(payload);
+    expect(detailComment.id).toEqual(payload.id);
+    expect(detailComment.username).toEqual(payload.username);
+    expect(detailComment.date).toEqual(payload.date);
+    expect(detailComment.content).toEqual('**komentar telah dihapus**');
+    expect(detailComment.replies).toEqual(payload.replies);
+    expect(detailComment.likeCount).toEqual(payload.likeCount);
+  });
+
+  it('should throw error if payload does not meet contained property', () => {
     // arrange
     const payload = {
       id: 'comment-123',

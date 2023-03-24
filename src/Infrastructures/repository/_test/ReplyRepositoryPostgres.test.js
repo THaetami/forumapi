@@ -87,10 +87,10 @@ describe('ReplyRepositoryPostgres', () => {
       await CommentsTableTestHelper.addCommentThread({ id: 'comment-twoInReply', owner: 'user-twoInReply', threadId: 'thread-wanInReply' });
 
       const replyA = {
-        id: 'reply-wanInReply', commentId: 'comment-wanInReply', content: 'reply wanInReply', date: '2020', isDeleted: false,
+        id: 'reply-wanInReply', commentId: 'comment-wanInReply', content: 'reply wanInReply', date: '2020',
       };
       const replyB = {
-        id: 'reply-twoInReply', commentId: 'comment-twoInReply', content: 'reply twoInReply', date: '2021', isDeleted: false,
+        id: 'reply-twoInReply', commentId: 'comment-twoInReply', content: 'reply twoInReply', date: '2021',
       };
 
       const expectedReplies = [

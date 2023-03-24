@@ -42,6 +42,22 @@ describe('a DetailReply entity', () => {
     expect(addedReply.content).toEqual(payload.content);
     expect(addedReply.date).toEqual(payload.date);
     expect(addedReply.username).toEqual(payload.username);
-    expect(addedReply.is_deleted).toEqual(payload.is_deleted);
+  });
+
+  it('should create AddedReply object properly when reply deleted', () => {
+    const payload = {
+      id: 'reply-123',
+      commentId: 'comment-123',
+      content: 'some reply',
+      date: '2021',
+      username: 'John Doe',
+      isDeleted: true,
+    };
+
+    const addedReply = new DetailReply(payload);
+    expect(addedReply.id).toEqual(payload.id);
+    expect(addedReply.content).toEqual('**balasan telah dihapus**');
+    expect(addedReply.date).toEqual(payload.date);
+    expect(addedReply.username).toEqual(payload.username);
   });
 });
