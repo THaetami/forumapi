@@ -5,19 +5,21 @@ const ReplyRepository = require('../../../Domains/replies/ReplyRepository');
 const LikeCommentRepository = require('../../../Domains/likes/LikeCommentRepository');
 const DetailComment = require('../../../Domains/comments/entities/DetailComment');
 const DetailReply = require('../../../Domains/replies/entities/DetailReply');
+const DetailThread = require('../../../Domains/threads/entities/DetailThread');
 
 describe('GetThreadUseCase', () => {
   it('should orchestrating the getted threads action correctly', async () => {
     // Arrange
     const useCaseParams = 'thread-istInThreadCase';
 
-    const expectedDetailThread = {
-      id: 'thread-istInThreadCase',
+    const expectedDetailThread = new DetailThread({
+      id: 'thread-1234',
       title: 'some thread title',
       body: 'some thread body',
       date: '2020',
-      username: 'istInThreadCase',
-    };
+      username: 'John Doe',
+      comments: [],
+    });
 
     const retrievedComments = [
       new DetailComment({
@@ -92,6 +94,7 @@ describe('GetThreadUseCase', () => {
     });
 
     const getThread = await getThreadUseCase.execute(useCaseParams);
+    console.log(getThread);
     expect(getThread).toEqual({
       ...expectedDetailThread, comments: expectedCommentsAndReplies,
     });
@@ -99,6 +102,5 @@ describe('GetThreadUseCase', () => {
     expect(mockThreadRepository.getThreabById).toBeCalledWith(useCaseParams);
     expect(mockCommentRepository.getCommentByThreadId).toBeCalledWith(useCaseParams);
     expect(mockReplyRepository.getReplyByThreadId).toBeCalledWith(useCaseParams);
-
   });
 });
