@@ -13,10 +13,10 @@ describe('GetThreadUseCase', () => {
     const useCaseParams = 'thread-istInThreadCase';
 
     const expectedDetailThread = new DetailThread({
-      id: 'thread-1234',
-      title: 'some thread title',
-      body: 'some thread body',
-      date: '2020',
+      id: 'thread-istInThreadCase',
+      title: 'thread title',
+      body: 'thread body',
+      date: '2023',
       username: 'John Doe',
       comments: [],
     });
@@ -94,10 +94,9 @@ describe('GetThreadUseCase', () => {
     });
 
     const getThread = await getThreadUseCase.execute(useCaseParams);
-    console.log(getThread);
-    expect(getThread).toEqual({
+     expect(getThread).toEqual(new DetailThread({
       ...expectedDetailThread, comments: expectedCommentsAndReplies,
-    });
+    }));
 
     expect(mockThreadRepository.getThreabById).toBeCalledWith(useCaseParams);
     expect(mockCommentRepository.getCommentByThreadId).toBeCalledWith(useCaseParams);
