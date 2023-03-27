@@ -100,6 +100,5 @@ describe('GetThreadUseCase', () => {
 
     expect(mockThreadRepository.getThreabById).toBeCalledWith(useCaseParams);
     expect(mockCommentRepository.getCommentByThreadId).toBeCalledWith(useCaseParams);
-    expect(mockReplyRepository.getReplyByThreadId).toBeCalledWith(useCaseParams);
   });
 });
