@@ -28,7 +28,7 @@ describe('GetThreadUseCase', () => {
         content: 'comment A',
         replies: [],
         isDeleted: false,
-        likeCount: 2
+        likeCount: 0
       }),
     ];
 

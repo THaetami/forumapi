@@ -12,7 +12,7 @@ class GetThreadUseCase {
     const thread = await this._threadRepository.getThreabById(useCaseParams);
     thread.comments = await this._commentRepository.getCommentByThreadId(useCaseParams);
     const threadReplies = await this._replyRepository.getReplyByThreadId(useCaseParams);
-
+    console.log(threadReplies);
     for (let i = 0; i < thread.comments.length; i += 1) {
       const commentId = thread.comments[i].id;
       thread.comments[i].replies = threadReplies
